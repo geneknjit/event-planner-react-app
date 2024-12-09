@@ -1,0 +1,204 @@
+.events-container {
+  max-width: 1200px; /* Adjust the max-width to fit 5 events */
+  margin: 20px auto; /* Center the container */
+  padding: 10px; /* Reduce the padding */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.events-container h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.events-list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Ensure the list fits within the container */
+  margin: 0 auto; /* Center the list within the container */
+  overflow-x: hidden;
+}
+
+.event-item {
+  /*flex: 0 0 calc(20% - 10px); /* Ensure each item takes up 20% of the container width */
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center; /* Center text horizontally */
+  width: 200px; /* Ensure minimum width for smaller screens */
+  height: 250px; /* Fixed height for event items */
+  overflow: hidden; /* Hide overflow content */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between top and bottom content */
+  align-items: center; /* Center content horizontally */
+}
+
+.event-item-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-item-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-item h3 {
+  margin: 0 0 10px 0;
+}
+
+.event-item p {
+  margin: 5px 0;
+}
+
+.event-date {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.event-time {
+  margin-bottom: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.events-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.events-container li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.events-container li h3 {
+  margin: 0 0 10px 0;
+}
+
+.events-container li p {
+  margin: 5px 0;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .events-container {
+    max-width: 1000px;
+  }
+
+  .event-item {
+    width: 160px;
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .events-container {
+    max-width: 800px;
+  }
+
+  .event-item {
+    width: 130px;
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .events-container {
+    max-width: 600px;
+  }
+
+  .event-item {
+    width: 80px;
+    height: 300px; /* Adjust height for smaller screens */
+  }
+
+  .events-list {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .events-container {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  .event-item {
+    flex: 0 0 100%;
+    min-width: 100%;
+    margin: 5px 0;
+    height: 120px; /* Adjust height for smaller screens */
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
