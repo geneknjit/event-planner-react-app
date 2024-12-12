@@ -2,10 +2,11 @@
   max-width: 800px; /* Adjust the max-width to fit the form */
   margin: 20px auto;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background-color: lightgray;
 }
 
 .event-form-container h2 {
@@ -15,10 +16,12 @@
 .form-row {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap; /* Ensure the columns wrap on smaller screens */
 }
 
 .form-column {
   flex: 0 0 48%; /* Each column takes up approximately half the width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .input-group {
@@ -33,9 +36,9 @@
 
 .input-group input,
 .input-group textarea {
-  width: 100%;
+  width: 94%; /* Ensure the input fields take up the full width of their container */
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 5px;
 }
 
@@ -46,10 +49,10 @@
 .btn {
   width: 100%;
   padding: 10px;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
   background-color: #007bff;
-  color: white;
+  color: black;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;

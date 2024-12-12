@@ -2,10 +2,11 @@
   max-width: 1200px; /* Adjust the max-width to fit 5 events */
   margin: 20px auto; /* Center the container */
   padding: 10px; /* Reduce the padding */
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background-color: lightskyblue;
 }
 
 .events-container h2 {
@@ -26,7 +27,7 @@
 .input-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 5px;
 }
 
@@ -36,7 +37,7 @@
   border: none;
   border-radius: 5px;
   background-color: #007bff;
-  color: white;
+  color: black;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
@@ -58,7 +59,7 @@
   /*flex: 0 0 calc(20% - 10px); /* Ensure each item takes up 20% of the container width */
   margin: 5px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 5px;
   text-align: center; /* Center text horizontally */
   width: 200px; /* Ensure minimum width for smaller screens */
@@ -68,6 +69,7 @@
   flex-direction: column;
   justify-content: space-between; /* Space between top and bottom content */
   align-items: center; /* Center content horizontally */
+  background-color: lightgray;
 }
 
 .event-item-top {
@@ -107,12 +109,16 @@
 
 .pagination button {
   padding: 10px 20px;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
   background-color: #007bff;
-  color: white;
+  color: black;
   font-size: 16px;
   cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
 }
 
 .pagination button:disabled {

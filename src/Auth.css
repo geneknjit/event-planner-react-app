@@ -1,15 +1,34 @@
+.page-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.page-image {
+  flex: 1;
+  max-width: 50%; /* Ensure the image takes up to half of the page */
+  background: url('volunteers-home.png') no-repeat center center;
+  background-size: cover;
+}
+
 .auth-container {
-  max-width: 400px;
-  margin: 50px auto;
+  flex: 1;
+  max-width: 50%; /* Ensure the form takes up to half of the page */
+  margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background-color: #c0c0c0; /* Silver/grey background color */
 }
 
 .auth-container h2 {
   margin-bottom: 20px;
+}
+
+.auth-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-group {
@@ -41,12 +60,12 @@
   margin-top: 10px;
 }
 
-.btn.secondary {
-  background-color: #6c757d;
-}
-
 .btn:hover {
   background-color: #0056b3;
+}
+
+.btn.secondary {
+  background-color: #6c757d;
 }
 
 .btn.secondary:hover {
@@ -56,4 +75,20 @@
 .error-message {
   color: red;
   margin-top: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .page-image {
+    height: 200px;
+  }
+
+  .auth-container {
+    max-width: 100%;
+    margin: 20px;
+  }
 }
