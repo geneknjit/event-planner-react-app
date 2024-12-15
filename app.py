@@ -28,9 +28,9 @@ def create_user():
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
-        INSERT INTO Users (first_name, last_name, email, password)
-        VALUES (?, ?, ?, ?)
-    """, data['first_name'], data['last_name'], data['email'], hashed_password.decode('utf-8'))
+        INSERT INTO Users (first_name, last_name, email, password, phone)
+        VALUES (?, ?, ?, ?, ?)
+    """, data['first_name'], data['last_name'], data['email'], hashed_password.decode('utf-8'), data['phone'])
     conn.commit()
     cursor.close()
     conn.close()
@@ -48,7 +48,8 @@ def get_users():
         'id': user[0],
         'first_name': user[1],
         'last_name': user[2],
-        'email': user[3]
+        'email': user[3],
+        'phone': user[5]
     } for user in users])
 
 @app.route('/api/users/<int:id>', methods=['DELETE'])

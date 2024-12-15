@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './EventForm.css';
 
 const EventForm = ({ onCreate }) => {
@@ -6,6 +7,7 @@ const EventForm = ({ onCreate }) => {
   const [details, setDetails] = useState('');
   const [datetime, setDatetime] = useState('');
   const [location, setLocation] = useState('');
+  const navigate = useNavigate();
 
   const handleCreateEvent = (e) => {
     e.preventDefault();
@@ -39,9 +41,12 @@ const EventForm = ({ onCreate }) => {
     });
   };
 
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="event-form-container">
-      <h2>Create Event</h2>
       <form onSubmit={handleCreateEvent}>
         <div className="form-row">
           <div className="form-column">
@@ -84,7 +89,10 @@ const EventForm = ({ onCreate }) => {
             </div>
           </div>
         </div>
-        <button type="submit" className="btn">Create Event</button>
+        <div className="button-row">
+          <button type="submit" className="btn create-event-btn">Create Event</button>
+          <button className="btn logout-btn" onClick={handleLogout}>Logout</button>
+        </div>
       </form>
     </div>
   );

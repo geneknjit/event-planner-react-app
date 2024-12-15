@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 const Register = () => {
@@ -6,7 +7,9 @@ const Register = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -20,19 +23,19 @@ const Register = () => {
         last_name: lastName,
         email: email,
         password: password,
+        phone: phone,
       }),
     })
     .then(response => response.json())
     .then(data => {
-      if (data.ok) {
-        window.location.href = '/login';
+      if (data.message === 'User created successfully') {
+        navigate('/login');
       } else {
-        setErrorMessage(data.message || 'Failed to register user');
+        setErrorMessage(data.message || 'Registration failed');
       }
     })
     .catch(error => {
-      console.error('Error:', error);
-      setErrorMessage('Failed to register user');
+      setErrorMessage('An error occurred. Please try again.');
     });
   };
 
@@ -78,9 +81,19 @@ const Register = () => {
               required
             />
           </div>
+          <div className="input-group">
+            <label>Phone</label>
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              maxLength="15"
+              required
+            />
+          </div>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <button type="submit" className="btn">Register</button>
-          <button className="btn secondary" onClick={() => window.location.href='/login'}>Login</button>
+          <button className="btn secondary" onClick={() => navigate('/login')}>Login</button>
         </form>
       </div>
     </div>

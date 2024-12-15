@@ -1,6 +1,6 @@
 .event-form-container {
   max-width: 800px; /* Adjust the max-width to fit the form */
-  margin: 20px auto;
+  margin: auto;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
@@ -47,19 +47,32 @@
 }
 
 .btn {
-  width: 100%;
-  padding: 10px;
+  height: 40px;
+  padding: 10px 20px; /* Add padding */
   border: 1px solid black;
   border-radius: 5px;
-  background-color: #007bff;
   color: black;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  width: 45%;
+  margin-left: 10px;
 }
 
-.btn:hover {
+.create-event-btn {
+  background-color: #007bff;
+}
+
+.create-event-btn:hover {
   background-color: #0056b3;
+}
+
+.logout-btn {
+  background-color: red;
+}
+
+.logout-btn:hover {
+  background-color: darkred;
 }
 
 /* Media Queries */
