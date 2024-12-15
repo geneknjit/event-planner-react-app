@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Events.css';
 import EventForm from './EventForm';
 
@@ -6,6 +7,7 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const eventsPerPage = 5;
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchEvents();
@@ -40,10 +42,19 @@ const Events = () => {
     }
   };
 
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   const displayedEvents = events.slice(currentIndex, currentIndex + eventsPerPage);
 
   return (
     <div className="events-container">
+      <div className="header">
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
       <EventForm onCreate={handleCreateEvent} />
 
       <h2>Events</h2>

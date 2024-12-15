@@ -1,12 +1,13 @@
 .events-container {
   max-width: 1200px; /* Adjust the max-width to fit 5 events */
   margin: 20px auto; /* Center the container */
-  padding: 10px; /* Reduce the padding */
+  padding: 20px; /* Adjust padding */
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: lightskyblue;
+  position: relative; /* Add position relative */
 }
 
 .events-container h2 {
@@ -145,6 +146,25 @@
 
 .events-container li p {
   margin: 5px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
 }
 
 /* Media Queries */

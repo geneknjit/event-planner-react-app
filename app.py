@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 import pyodbc
 from dotenv import load_dotenv
+import bcrypt
 
 # Load environment variables from .env file
 load_dotenv()
@@ -22,12 +23,14 @@ def get_db_connection():
 @app.route('/api/users', methods=['POST'])
 def create_user():
     data = request.get_json()
+    # Ensure the password is encoded to bytes before hashing
+    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO Users (first_name, last_name, email, password)
         VALUES (?, ?, ?, ?)
-    """, data['first_name'], data['last_name'], data['email'], data['password'])
+    """, data['first_name'], data['last_name'], data['email'], hashed_password.decode('utf-8'))
     conn.commit()
     cursor.close()
     conn.close()
@@ -48,18 +51,28 @@ def get_users():
         'email': user[3]
     } for user in users])
 
+@app.route('/api/users/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM Users WHERE id = ?", id)
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return jsonify({'message': 'User deleted successfully'})
+
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT * FROM Users WHERE email = ? AND password = ?
-    """, data['email'], data['password'])
+        SELECT * FROM Users WHERE email = ?
+    """, data['email'])
     user = cursor.fetchone()
     cursor.close()
     conn.close()
-    if user:
+    if user and bcrypt.checkpw(data['password'].encode('utf-8'), user[4].encode('utf-8')):
         return jsonify({'message': 'Login successful', 'redirect': '/events'}), 200
     else:
         return jsonify({'message': 'Invalid email or password'}), 401
