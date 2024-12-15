@@ -9,6 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -29,12 +30,13 @@ const Register = () => {
     .then(response => response.json())
     .then(data => {
       if (data.message === 'User created successfully') {
-        navigate('/login');
+        setSuccessMessage(data.message);
       } else {
         setErrorMessage(data.message || 'Registration failed');
       }
     })
     .catch(error => {
+      console.error('Error:', error);
       setErrorMessage('An error occurred. Please try again.');
     });
   };
@@ -43,8 +45,8 @@ const Register = () => {
     <div className="page-container">
       <div className="page-image"></div>
       <div className="auth-container">
-        <h2>Register</h2>
         <form onSubmit={handleRegister} className="auth-form">
+          <h2>Register</h2>
           <div className="input-group">
             <label>First Name</label>
             <input
@@ -91,6 +93,7 @@ const Register = () => {
               required
             />
           </div>
+          {successMessage && <p className="success-message">{successMessage}</p>}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <button type="submit" className="btn">Register</button>
           <button className="btn secondary" onClick={() => navigate('/login')}>Login</button>

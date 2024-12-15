@@ -23,10 +23,17 @@ def get_db_connection():
 @app.route('/api/users', methods=['POST'])
 def create_user():
     data = request.get_json()
-    # Ensure the password is encoded to bytes before hashing
-    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
+    # Check if the email is already in use
     conn = get_db_connection()
     cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Users WHERE email = ?", data['email'])
+    user = cursor.fetchone()
+    if user:
+        cursor.close()
+        conn.close()
+        return jsonify({'message': 'Email already registered'}), 400
+    # Ensure the password is encoded to bytes before hashing
+    hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
     cursor.execute("""
         INSERT INTO Users (first_name, last_name, email, password, phone)
         VALUES (?, ?, ?, ?, ?)

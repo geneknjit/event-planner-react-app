@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -36,8 +38,8 @@ const Login = () => {
     <div className="page-container">
       <div className="page-image"></div>
       <div className="auth-container">
-        <h2>Login</h2>
         <form onSubmit={handleLogin} className="auth-form">
+          <h2>Login</h2>
           <div className="input-group">
             <label>Email</label>
             <input
@@ -58,7 +60,7 @@ const Login = () => {
           </div>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <button type="submit" className="btn">Login</button>
-          <button className="btn secondary" onClick={() => window.location.href='/register'}>Register</button>
+          <button type="button" className="btn secondary" onClick={() => navigate('/register')}>Register</button>
         </form>
       </div>
     </div>
