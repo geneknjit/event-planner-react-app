@@ -144,7 +144,9 @@ def delete_event(id):
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
+@app.route('/login', defaults={'path': '/login'})
+@app.route('/register', defaults={'path': '/register'})
+@app.route('/events', defaults={'path': '/events'})
 def serve_react_app(path):
     if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
         return send_from_directory(app.static_folder, path)

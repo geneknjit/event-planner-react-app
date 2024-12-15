@@ -65,8 +65,8 @@ const Events = () => {
         })}
       </div>
       <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentIndex === 0}>Previous</button>
-        <button onClick={handleNextPage} disabled={currentIndex + eventsPerPage >= events.length}>Next</button>
+        <button onClick={handlePreviousPage} disabled={currentIndex === 0}><i class="fa-solid fa-arrow-left"></i>&nbsp;Previous</button>
+        <button onClick={handleNextPage} disabled={currentIndex + eventsPerPage >= events.length}>Next&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
   );
