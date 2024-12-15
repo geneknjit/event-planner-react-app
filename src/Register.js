@@ -14,6 +14,8 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    setErrorMessage('');
+    setSuccessMessage('');
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users`, {
       method: 'POST',
       headers: {

@@ -10,6 +10,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setErrorMessage('');
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/login`, {
       method: 'POST',
       headers: {
