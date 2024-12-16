@@ -1,16 +1,17 @@
 # Event Planner Website
 
-Website URL: event-planner-react-app.azurewebsites.net
+## Website URL
+event-planner-react-app.azurewebsites.net
 
-# Backend
+### Backend
 Python
 Flask
 
-# Database
+### Database
 Azure SQL Database
 
-# Frontend
+### Frontend
 React.js
 
-# Cloud Infrastructure
+### Cloud Infrastructure
 Build and Deployment: Azure App Service
